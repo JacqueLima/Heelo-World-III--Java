@@ -1,0 +1,26 @@
+package aula_3_java;
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+
+public class Exemplo_3 {
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("0.00");
+        
+        double total, prestacao, juros;
+        int tempo;
+        
+        System.out.println("Digite o valor da prestação: ");
+        prestacao = ler.nextDouble();
+        
+        System.out.println("Informe quantos dias a prestação está em atraso: ");
+        tempo = ler.nextInt();
+        
+        total = prestacao + (prestacao * 0.02 * tempo);
+        juros = total - prestacao;
+        System.out.println("Total do juros R$: "+df.format(juros));
+        System.out.println("Total da prestacao R$: "+df.format(total));
+        
+    }
+}
