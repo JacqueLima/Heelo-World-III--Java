@@ -1,0 +1,27 @@
+package aula_3_java;
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class Exemplo_1 {
+
+    public static void main(String[] args) {
+        // Sistema de câmbio
+        Scanner ler = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("0.00");
+        
+        double reais, dolar, cotacao;
+        
+        System.out.println("Informa o valor em reais R$ ");
+        reais = ler.nextDouble();
+        
+        System.out.println("Informe a cotação do dolar hoje R$ ");
+        cotacao = ler.nextDouble();
+        
+        dolar = reais / cotacao;
+        
+        System.out.println("Valor em dolar $ "+dolar);
+        System.out.println("Valor em dolar $ "+df.format(dolar));
+        
+    }
+    
+}
