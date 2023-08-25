@@ -1,0 +1,31 @@
+package aula_3_java;
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+
+public class Exemplo_2 {
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("0.00");
+        
+        String nome;
+        double precofabrica, revendedor, imposto, precofinal;
+        System.out.println("Digite o nome do carro: ");
+        nome = ler.nextLine();
+        
+        System.out.println("Digite o valor do carro na fabrica R$: ");
+        precofabrica = ler.nextDouble();
+        
+        revendedor = precofabrica * 0.40;
+        imposto = precofabrica * 0.30;
+        precofinal = precofabrica + revendedor + imposto;
+        
+        System.out.println("############################");
+        System.out.println("Nome do carro: "+nome);
+        System.out.println("Valor do revendedor R$: "+df.format(revendedor));
+        System.out.println("Valor do imposto R$: "+df.format(imposto));
+        System.out.println("Preço final R$: "+df.format(precofinal));
+        
+    }
+ 
+}
