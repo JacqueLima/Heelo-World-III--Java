@@ -1,0 +1,22 @@
+
+ //Ler um número e determinar se ele é maior ou igual ou menor do que zero.
+ 
+package comparacaonumero;
+
+import java.util.Scanner;
+
+public class ComparacaoNumero {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Digite um número:");
+        int numero = sc.nextInt();
+        if (numero > 0) {
+            System.out.println("O número é maior que zero.");
+        } else if (numero == 0) {
+            System.out.println("O número é igual a zero.");
+        } else {
+            System.out.println("O número é zero.");
+        }
+    }
+}
