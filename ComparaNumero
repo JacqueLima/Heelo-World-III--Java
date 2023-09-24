@@ -9,6 +9,7 @@ public class ComparacaoNumero {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int numero;
         System.out.println("Digite um número:");
         int numero = sc.nextInt();
         if (numero > 0) {
