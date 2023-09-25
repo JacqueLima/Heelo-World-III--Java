@@ -4,23 +4,23 @@ import java.text.DecimalFormat;
 
 public class CauculaImc {
      public static void main(String[] args) {
-         double peso,altura,imc;
-         Scanner teclado = new Scanner(System.in); 
-         DecimalFormat df = new DecimalFormat("0.00");
-          System.out.println("Cálculo do IMC");        
-          System.out.print("Digite seu peso: ");
-           peso = teclado.nextDouble();
-            System.out.print("Digite sua altura: ");
-             altura = teclado.nextDouble();
-             imc= peso/(altura * altura);
-              System.out.println("IMC: "+df.format(imc));
-          if (imc>25) {
-              System.out.println("Você stá acima dopeso!");  
-         } else {
-              System.out.println("Você está saudável!"); 
-         }
+     double peso,altura,imc;
+     Scanner teclado = new Scanner(System.in); 
+     DecimalFormat df = new DecimalFormat("0.00");
+      System.out.println("Cálculo do IMC");        
+            System.out.print("Digite seu peso: ");
+              peso = teclado.nextDouble();
+                System.out.print("Digite sua altura: ");
+                  altura = teclado.nextDouble();
+                    imc= peso/(altura * altura);
+                      System.out.println("IMC: "+df.format(imc));
+                         if (imc>25) {
+                           System.out.println("Você stá acima dopeso!");  
+              }              else {
+                               System.out.println("Você está saudável!"); 
+          }
    
         
-    }
+     }
     
 }
