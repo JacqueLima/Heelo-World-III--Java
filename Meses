@@ -1,0 +1,38 @@
+Escreva um programa que leia um número entre 1 e 12 e escreva o mês correspondente. Ex: Se o 
+número lido for 2, deverá ser mostrado ao usuário “Fevereiro”
+ 
+ 
+package meses;
+import java.util.Scanner;
+
+public class Meses {
+
+    public static void main(String[] args) {
+        // Cria um objeto Scanner para ler a entrada do usuário
+        Scanner sc = new Scanner(System.in);
+
+        // Lê um número inteiro entre 1 e 12
+        System.out.println("Digite um número entre 1 e 12:");
+        int numero = sc.nextInt();
+
+        // Verifica se o número é válido
+        // || significa OU
+        if (numero < 1 || numero > 12) {
+            System.out.println("Número inválido!");
+        } else {
+            // Cria um array com os nomes dos meses
+            String[] meses = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                              "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+
+            // Obtém o índice do array correspondente ao número digitado
+            int indice = numero - 1;
+
+            // Obtém o nome do mês correspondente
+            String mes = meses[indice];
+
+            // Mostra o nome do mês ao usuário
+            System.out.println("O mês correspondente é: " + mes);
+        }
+    }
+    
+}
