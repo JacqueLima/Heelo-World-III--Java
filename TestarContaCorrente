@@ -24,13 +24,14 @@ public class ContaCorrente {
    float saldo; 
    
    
-   void definirSaldoInicial(float valor){
+   public void definirSaldoInicial(float valor){
        
    }
-   void depositar(float valor){
+   public void depositar(float valor){
        
    }
-   void sacar(float valor){
+   public 
+void sacar(float valor){
        
    }
 }
