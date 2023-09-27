@@ -1,0 +1,36 @@
+package testarcontacorrente;
+
+
+public class TestarContaCorrente {
+
+    
+    public static void main(String[] args) {
+        ContaCorrente cc1 = new ContaCorrente();
+        cc1.definirSaldoInicial(1000);
+        cc1.saldo = 1000;
+        cc1.sacar(500);
+        cc1.depositar(50);
+        cc1.saldo = 550;
+        cc1.sacar(600);
+        cc1.saldo = -50;
+    }
+    
+}
+
+
+package testarcontacorrente;
+
+public class ContaCorrente {
+   float saldo; 
+   
+   
+   void definirSaldoInicial(float valor){
+       
+   }
+   void depositar(float valor){
+       
+   }
+   void sacar(float valor){
+       
+   }
+}
