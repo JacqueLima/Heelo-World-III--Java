@@ -1,0 +1,65 @@
+classe data
+package com.mycompany.testardata;
+
+public class Data {
+    public int dia;
+    public int mes;
+    public int ano;
+    
+    public void escreverAData(){
+        boolean erro=false;
+        if(dia<1 || dia>31) erro = true;
+        if(mes<1 || mes>12) erro = true;
+        if(ano<1) erro = true;
+        if(!erro) System.out.println("Data: "+dia+"/"+mes+"/"+ano);
+        else System.out.println("Algum dos valores é inválido para data!!");
+    }
+    
+    public void escreverOMes(){
+        switch(mes){
+            case 1 -> System.out.println("Janeiro");
+            case 2 -> System.out.println("Fevereiro");
+            case 3 -> System.out.println("Março");
+            case 4 -> System.out.println("Abril");
+            case 5 -> System.out.println("Maio");
+            case 6 -> System.out.println("Junho");
+            case 7 -> System.out.println("Julho");
+            case 8 -> System.out.println("Agosto");
+            case 9 -> System.out.println("Setembro");
+            case 10 -> System.out.println("Outubro");
+            case 11 -> System.out.println("Novenbro");
+            case 12 -> System.out.println("Dezembro");
+            default -> System.out.println("Mês Inválido!");
+        }
+    }
+}
+
+
+
+
+********************
+
+classe testardata
+
+package com.mycompany.testardata;
+
+import java.util.Scanner;
+
+
+public class TestarData {
+
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        Data data1 = new Data();
+        int cont=1;
+        do{
+            System.out.println("Informe a data (somente os numeros): dd/mm/aaaa");
+            data1.dia = ler.nextInt();
+            data1.mes = ler.nextInt();
+            data1.ano = ler.nextInt();
+            data1.escreverAData();
+            data1.escreverOMes();
+            cont++;
+        }while(cont<=3);
+    }
+}
