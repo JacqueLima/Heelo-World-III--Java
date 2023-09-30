@@ -1,0 +1,37 @@
+package com.mycompany.testarpessoa;
+import java.util.Scanner;
+
+public class TestarPessoa {
+
+    public static void main(String[] args) {
+        Pessoa p1= new Pessoa();
+        p1.nome="Jacqueline";
+        p1.idade=50;
+        p1.dizerONome();
+        p1.dizerAIdad();
+        p1.fazerAniversario();
+        p1.dizerAIdad();
+    }
+}//FIM DA CLASSE TESTARPESSOA
+
+
+
+package com.mycompany.testarpessoa;
+import java.util.Scanner;
+
+public class Pessoa {
+  String nome;
+  int idade;  
+  
+     void dizerONome(){
+      System.out.println("Olá,meu nome é " + nome);       
+  }
+     void dizerAIdad(){
+      System.out.println("Olá,minha idade é " + idade); 
+  }
+     void fazerAniversario(){
+      idade=idade+ 1; 
+  }
+}
+//FIM DA CLASSE PESSOA
+
