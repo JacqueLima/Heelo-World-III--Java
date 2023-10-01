@@ -1,0 +1,40 @@
+package com.mycompany.testarlampada;
+
+
+public class TestarLampada {
+
+    public static void main(String[] args) {
+      Lampada lamp=new Lampada(); 
+      lamp.acender();
+      lamp.informarSituacao();
+      lamp.apagar();
+      lamp.informarSituacao();
+      lamp.informarPotencia();
+    }
+}//FIM DA CLASSE TESTAR LAMPADA
+
+public class Lampada {
+  boolean acesa;
+  int potencia;  
+  
+  void acender(){
+      acesa=true;
+    } // altera o atributo acesa para true
+ 
+  void apagar(){
+     acesa=false;
+    }// altera o atributo acesa para false
+    
+  void informarSituacao(){
+      if (acesa) {
+         System.out.print("A luz está acesa!");
+      } else {
+         System.out.print("A luz está apagada!"); 
+      }
+ }
+  void informarPotencia(){
+    System.out.print("A potência da lâmpada é " + potencia);
+ }
+  
+}//FIM DA CLASSE LAMPADA
+
