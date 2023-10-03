@@ -12,7 +12,7 @@ public class TestarContaCorrente {
         cc1.depositar(50);
         cc1.saldo = 550;
         cc1.sacar(600);
-        cc1.saldo = -50;
+       
     }
     
 }
