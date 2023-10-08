@@ -31,7 +31,7 @@ public class Caneta {
    private boolean tampada;
    private String cor;
    
-   /*public Caneta(){//MÉTODO CONSTRUTOR TEM O MESMO NOME DA CLASSE.
+   /*public Caneta(){//MÉTODO CONSTRUTOR TEM O MESMO NOME DA CLASSE
        this.tampar();
        this.cor="Azul";
    }
@@ -39,8 +39,8 @@ public class Caneta {
     ESSE CÓDIGO É UM MÉTODO CONSTRUTOR SIMPLES.ELE TAMBÉM JÁ PODE INICIAR COM PARÂMETROS CONFORME MODELO 
     ABAIXO:*/
         public Caneta (String m,String c,float p){
-           this.modelo=m;
-           this.cor=c;
+           this.modelo=m;//this pode ser usado para diferenciar um atributo (com o mesmo nome)do objeto de um parâmetro do método.
+           this.cor=c;//Talvez this não precise aqui,porque cor=c.Mas preciso perguntar para o prof.
            this.ponta=p;//TAMBÉM POSSO COLOCAR: setPonta(p;
            this.tampar();
         }
