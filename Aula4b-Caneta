@@ -55,8 +55,8 @@ public class Caneta {
    
    
    public void setModelo(String m){
-       this.modelo=m; /*Isso significa:this.modelo recebe m*/
-   }/*Aqui é Void porque não tem retorno e Set tem parâmetro-
+       this.modelo=m; /*Isso significa:this.modelo recebe m. O m entre parenteses não é um atributo,ele é uma variável*/
+   }/*Aqui é Void porque não tem retorno e normalmente o método Set tem parâmetro-
      vai algo entre os parenteses()*/
    
    public float getPonta(){
