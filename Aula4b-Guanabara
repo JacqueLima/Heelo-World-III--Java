@@ -1,0 +1,85 @@
+/*MÉTODOS ESPECIAIS : GETTERS E SETTERS
+ ESSES MÉTODOS PROTEGEM O ACESSO AO(OS) ATRIBUTO(OS).
+ */
+package aula4b;
+
+
+public class Aula4B {
+     public static void main(String[] args) {
+        Caneta c1 =new Caneta("NICEIA","AMARELA",0.3f);//COLOCAR AQUI OS PARÂMETROS(SE TIVER) DO MÉTODO CONSTRUTOR//
+        Caneta c2= new Caneta("Laura","Rosa",0.2f);
+        //c1.setModelo("Bic");//AQUI ESTOU USANDO O MÉTODO SET.
+        //TAMBÉM POSSO FAZER ASSIM:c1.Modelo="BIC";PORQUE NÃO É PRIVADO.
+        
+        //c1.setPonta(0.5f);//TEM QUE COLOCAR F POR SER FLOAT.
+        //AQUI É PRIVADO E SÓ PODE SER ACESSADO POR SET.
+        
+        c1.status();//STATUS MOSTRA O ESTADO DO OBJETO.
+         System.out.println("********************************");//FRESCURINHA PARA SEPARAR OS OBJETOS INSTANCIADOS :)
+        //Também posso tirar o status e escrever conforme abaixo:
+        //System.out.println("Tenho uma caneta " + c1.getModelo() + " de ponta " + c1.getPonta());
+        c2.status();//STATUS MOSTRA O ESTADO DO OBJETO.
+    }
+    
+}
+
+********************************************************************************
+package aula4b;
+public class Caneta {
+   public String modelo;
+   private float ponta;
+   private boolean tampada;
+   private String cor;
+   
+   /*public Caneta(){//MÉTODO CONSTRUTOR TEM O MESMO NOME DA CLASSE.
+       this.tampar();
+       this.cor="Azul";
+   }
+   /*COM O MÉTODO CONSTRUTOR O OBJETO JÁ INICIA COM ESSES ATRIBUTOS:TAMPAR E AZUL,PQ EU DEFINE ASSIM.
+    ESSE CÓDIGO É UM MÉTODO CONSTRUTOR SIMPLES.ELE TAMBÉM JÁ PODE INICIAR COM PARÂMETROS CONFORME MODELO 
+    ABAIXO:*/
+        public Caneta (String m,String c,float p){
+           this.modelo=m;
+           this.cor=c;
+           this.ponta=p;//TAMBÉM POSSO COLOCAR: setPonta(p;
+           this.tampar();
+        }
+          /*IMPORTANTE-->TENHO QUE PASSAR OS PARÂMETROS LÁ PARA PARENTESES DE new Caneta().
+        }*/
+   
+   
+   public String getModelo(){
+       return this.modelo;
+   }/*Preciso retornar em String porque o atributo Modelo é String.
+    Get tem retorno (Return).*/
+   
+   
+   public void setModelo(String m){
+       this.modelo=m; /*Isso significa:this.modelo recebe m*/
+   }/*Aqui é Void porque não tem retorno e Set tem parâmetro-
+     vai algo entre os parenteses()*/
+   
+   public float getPonta(){
+       return this.ponta;
+   }
+   public void setPonta(float p){
+       this.ponta=p;
+   }
+   
+   public void tampar(){
+       this.tampada=true;
+   }
+   
+   public void destampar(){
+       this.tampada=false;
+   }
+   
+   public void status(){
+       System.out.println("Sobre a caneta: ");  
+       System.out.println("Modelo: " + this.getModelo());//AQUI POSSO FAZER ASSIM TAMBÉM:this.modelo
+       System.out.println("Ponta: " + this.getPonta());//AQUI POSSO FAZER ASSIM TAMBÉM:this.ponta
+       System.out.println("Cor: " + this.cor);
+       System.out.println("Tampada: " + this.tampada);
+   }
+   
+}
