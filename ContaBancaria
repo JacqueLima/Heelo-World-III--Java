@@ -1,0 +1,139 @@
+package contas.java;
+public class ContasJava {
+   public static void main(String[] args) {
+      ContaBancaria contaPoupanca =new ContaBancaria("João",0001,1000);
+      contaPoupanca.dados();
+      ContaBancaria contaEspecial = new ContaBancaria("Maria",0002,2500);
+      contaEspecial.dados();
+    }
+    
+}
+#####################
+  package contas.java;
+public class ContaBancaria {
+    private String cliente;
+    private int numConta;
+    private float saldo;
+   
+    public ContaBancaria(String cliente, int numConta, float saldo) {
+        this.cliente = cliente;
+        this.numConta = numConta;
+        this.saldo = saldo;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public int getNumConta() {
+        return numConta;
+    }
+
+    public void setNumConta(int numConta) {
+        this.numConta = numConta;
+    }
+
+    public float getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
+    }
+     
+    public void sacar(){
+        if (this.getSaldo()>0 && this.getSaldo()<=saldo) {
+            System.out.println("Saque realizado com sucesso.Saldo atual: " + getSaldo());
+        } else {
+            System.out.println("Saldo insuficiente.");
+        }
+    }
+    public void depositar(){
+        
+    }
+    public void dados(){
+        System.out.println("Cliente: " + this.getCliente());
+        System.out.println("Numero da conta: " + this.getNumConta());
+        System.out.println("Saldo: " + this.getSaldo());
+    }
+}
+
+
+########################
+  package contas.java;
+public class ContaPoupanca extends ContaBancaria {
+    private float diaRendimento;
+    private float novosaldo;
+
+    public ContaPoupanca(float diaRendimento, float novosaldo, String cliente, int numConta, float saldo) {
+        super(cliente, numConta, saldo);
+        this.diaRendimento = diaRendimento;
+        this.novosaldo = novosaldo;
+    }
+ 
+    public ContaPoupanca(int diaRendimento) {
+        this.diaRendimento = diaRendimento;
+    }
+
+    public float getDiaRendimento() {
+        return diaRendimento;
+    }
+
+    public void setDiaRendimento(int diaRendimento) {
+        this.diaRendimento = diaRendimento;
+    }
+    
+    public void setcalcular(float novosaldo){
+        this.novosaldo = novosaldo;
+    }
+    
+    public float getcalcular(){
+        return this.novosaldo;
+    }
+
+    public void dados(){
+    super.dados();
+        System.out.println("Rendimento diario: " + this.getDiaRendimento());
+        System.out.println("Saldo atualizado: " +this.getcalcular());
+  }
+}
+####################
+  package contas.java;
+public class ContaEspecial extends ContaBancaria {
+    private float limite;
+    private float redifinirsaque;
+
+    public ContaEspecial(float limite, float redifinirsaque, String cliente, int numConta, float saldo) {
+        super(cliente, numConta, saldo);
+        this.limite = limite;
+        this.redifinirsaque = redifinirsaque;
+    }
+
+    public float getLimite() {
+        return limite;
+    }
+
+    public void setLimite(float limite) {
+        this.limite = limite;
+    }
+
+    public float getRedifinirsaque() {
+        return redifinirsaque;
+    }
+
+    public void setRedifinirsaque(float redifinirsaque) {
+        this.redifinirsaque = redifinirsaque;
+        
+    }
+    
+
+    public void dados(){
+        super.dados();
+        System.out.println("Limite: "+ this.getLimite());
+        System.out.println("Redefinição de saque: " + this.getRedifinirsaque());
+    }
+}
