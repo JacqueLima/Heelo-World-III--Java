@@ -1,0 +1,161 @@
+package com.mycompany.testeanimal;
+
+
+public class TesteAnimal {
+
+    public static void main(String[] args) {
+      Peixe tubarao=new Peixe("Barbatanas e cauda", "Tubarao", 300, 0, "Cinzento", "mar",1.5);
+      tubarao.dados();
+      Mamifero camelo=new Mamifero("leite","Camelo",150,4,"Amarelo","terra",2.0);
+      camelo.dados();
+      Mamifero urso=new Mamifero("mel","Urso do Canada",180,4,"Vermelho","terra",0.5);
+      urso.dados();
+    }
+    
+}
+
+############################
+
+package com.mycompany.testeanimal;
+
+
+public class Animal {
+    private int codigo;
+    private String nome;
+    private double comprimento;
+    private int numDePatas;
+    private String cor;
+    private String ambiente;
+    private double velocidadeMedia;
+    private static int auxCodigo=0;
+    //ATRIBUTOS
+    
+public Animal(String nome, double comprimento, int numDePatas, String cor, String ambiente, double velocidadeMedia) {
+        this.nome = nome;
+        this.comprimento = comprimento;
+        this.numDePatas = numDePatas;
+        this.cor = cor;
+        this.ambiente = ambiente;
+        this.velocidadeMedia = velocidadeMedia;
+    }//CONSTRUTOR
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getComprimento() {
+        return comprimento;
+    }
+
+    public void setComprimento(double comprimento) {
+        this.comprimento = comprimento;
+    }
+
+    public int getNumDePatas() {
+        return numDePatas;
+    }
+
+    public void setNumDePatas(int numDePatas) {
+        this.numDePatas = numDePatas;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getAmbiente() {
+        return ambiente;
+    }
+
+    public void setAmbiente(String ambiente) {
+        this.ambiente = ambiente;
+    }
+
+    public double getVelocidadeMedia() {
+        return velocidadeMedia;
+    }
+
+    public void setVelocidadeMedia(double velocidadeMedia) {
+        this.velocidadeMedia = velocidadeMedia;
+    }
+    public int getCodigo(){
+        return codigo;
+    }
+
+    public void dados(){
+        System.out.println("Nome"+getNome());
+        System.out.println("Comprimento"+ getComprimento());
+        System.out.println("Número de patas"+getNumDePatas());
+        System.out.println("Cor"+getCor());
+        System.out.println("Habitat"+getAmbiente());
+        System.out.println("Velocidade"+getVelocidadeMedia());
+}
+}
+#################################
+package com.mycompany.testeanimal;
+
+
+public class Peixe extends Animal {
+    private String caracteristica;
+
+    public Peixe(String caracteristica, String nome, double comprimento, int numDePatas, String cor, String ambiente, double velocidadeMedia) {
+        super(nome, comprimento, numDePatas, cor, ambiente, velocidadeMedia);
+        this.caracteristica = caracteristica;
+        
+    }
+
+    public String getCaracteristica() {
+        return caracteristica;
+    }
+
+    public void setCaracteristica(String caracteristica) {
+        this.caracteristica = caracteristica;
+    }
+
+    @Override
+    public void dados() {
+        super.dados(); 
+        System.out.println("Caracteristicas"+getCaracteristica());
+        
+    }
+    
+    
+    
+}
+####################################
+package com.mycompany.testeanimal;
+
+
+public class Mamifero extends Animal {
+    private String alimento;
+
+    public Mamifero(String alimento, String nome, double comprimento, int numDePatas, String cor, String ambiente, double velocidadeMedia) {
+        super(nome, comprimento, numDePatas, cor, ambiente, velocidadeMedia);
+        this.alimento = alimento;
+    }
+
+    public String getAlimento() {
+        return alimento;
+    }
+
+    public void setAlimento(String alimento) {
+        this.alimento = alimento;
+    }
+
+    @Override
+    public void dados() {
+        super.dados(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        System.out.println("Alimento: " + getAlimento());
+    }
+    
+    
+    
+}
