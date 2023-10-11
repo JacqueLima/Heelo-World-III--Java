@@ -36,7 +36,7 @@ public class Colecao {
                 case 2: System.out.println("Cadastro de Alunos:");
                 break;
                 case 3: System.out.println("Professores:");
-                        if(cadastroP.isEmpty()) System.out.println("Nenhum cadastro!");
+                        if(cadastroP.isEmpty()) System.out.println("Nenhum cadastro!");//Verifica se a lista está vazia ou não. Retorna verdadeiro se a lista não contém nenhum elemento, caso contrário, retorna falso se a lista contém qualquer elemento.
                         else{
                             for(Professor p: cadastroP){
                                 p.dados();
