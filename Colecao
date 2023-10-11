@@ -1,0 +1,204 @@
+package com.mycompany.colecao;
+import java.util.Scanner;
+import java.util.ArrayList;
+public class Colecao {
+
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        ArrayList<Professor> cadastroP = new ArrayList();
+        int opcao;
+        String nome,endereco;
+        int idade;
+        double salario;
+        do{
+            System.out.println("\n1 - Cadastrar Professor");
+            System.out.println("2 - Cadastrar Aluno");
+            System.out.println("3 - Listar Professor");
+            System.out.println("4 - Listar Aluno");
+            System.out.println("0 - Sair  ==> ");
+            opcao = ler.nextInt();
+            switch(opcao){
+                case 1: System.out.println("Cadastro de Professores:");
+                    System.out.println("Informe o nome: ");
+                    ler.nextLine();
+                    nome = ler.nextLine();
+                    System.out.println("Informe o endereço: ");
+                    endereco = ler.nextLine();
+                    System.out.println("Informe a idade: ");
+                    idade = ler.nextInt();
+                    System.out.println("Informe o salario: ");
+                    salario = ler.nextDouble();
+                    Professor p1 = new Professor(salario, nome, endereco, idade);
+                    cadastroP.add(p1);
+                    System.out.println("Cadastro realizado comm sucesso!");
+                    
+                break;
+                case 2: System.out.println("Cadastro de Alunos:");
+                break;
+                case 3: System.out.println("Professores:");
+                        if(cadastroP.isEmpty()) System.out.println("Nenhum cadastro!");
+                        else{
+                            for(Professor p: cadastroP){
+                                p.dados();
+                            }
+                        }
+                
+                break;
+                case 4: System.out.println("Alunos:");
+                break;
+                case 0:
+                break;
+                default: System.out.println(" ==> Opção inválida!");
+            }
+        }while(opcao!=0);
+    }
+}
+#############################################
+
+
+package com.mycompany.colecao;
+
+
+public class Pessoa {
+    
+    private String nome;
+    private String endereco;
+    private int idade;
+
+    public Pessoa(String nome, String endereco, int idade) {
+        this.nome = nome;
+        this.endereco = endereco;
+        this.idade = idade;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    
+    public void dados(){
+        System.out.println("***************************");
+        System.out.println("Nome: " + getNome());
+        System.out.println("Endereço: " + getEndereco());
+        System.out.println("Idade: " + getIdade());
+    }
+    
+    
+}
+############################################
+
+package com.mycompany.colecao;
+
+
+public class Aluno extends Pessoa {
+    
+    private int matricula;
+    private double nota1;
+    private double nota2;
+    private double nota3;
+    private static int auxMat = 20230001;
+    
+    public Aluno (double nota1, double nota2, double nota3, String nome, String endereco, int idade) {
+        super(nome, endereco, idade);
+        this.nota1 = nota1;
+        this.nota2 = nota2;
+        this.nota3 = nota3;
+        this.matricula = ++auxMat;
+    }
+
+    public double getNota3() {
+        return nota3;
+    }
+
+    public void setNota3(double nota3) {
+        this.nota3 = nota3;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public double getNota1() {
+        return nota1;
+    }
+
+    public void setNota1(double nota1) {
+        this.nota1 = nota1;
+    }
+
+    public double getNota2() {
+        return nota2;
+    }
+
+    public void setNota2(double nota2) {
+        this.nota2 = nota2;
+    }
+
+   
+    public void dados() {
+        super.dados();
+        System.out.println("NOTAS DO ALUNO: ");
+        System.out.println("Matricula: " + getMatricula());
+        System.out.println("Nota 1:  " + getNota1());
+        System.out.println("Nota 2: " + getNota2());
+        System.out.println("Nota 3: " + getNota3());
+        System.out.println("Média Final: " + calculoMedia());
+    }
+    
+    private double calculoMedia(){
+        return ((getNota1()+getNota2()+getNota3())/3);
+    }
+    
+    
+    
+}
+########################################################
+
+package com.mycompany.colecao;
+
+
+public class Professor extends Pessoa {
+    
+    private double salario;
+
+    public Professor(double salario, String nome, String endereco, int idade) {
+        super(nome, endereco, idade);
+        this.salario = salario;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+
+    @Override
+    public void dados() {
+        super.dados(); 
+        System.out.println("Salário: " + getSalario());
+    }
+    
+    
+    
+}
