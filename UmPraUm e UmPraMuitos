@@ -1,0 +1,137 @@
+//AINDA NÃO TERMINEI TUDO
+
+package umpraum;
+public class UmPraUm {
+    public static void main(String[] args) {
+        Contato contato = new Contato();
+        contato.setNome("Frangolino");
+        //contato.setEndereco("Beco Diagonal");
+        //contato.setTelefone("666666");
+        
+        //Criar objeto endereco pra passar depois para o set do contato
+        Endereco end = new Endereco();
+        end.setNomeRua("Beco Diagonal");
+        end.setNumero("n/a");
+        end.setComplemento("-");
+        end.setCidade("Alexandria");
+        end.setEstado("Terra do Nunca");
+        end.setCep("333333");
+        
+        contato.setEndereco(end);
+        
+        //Relacionamento  tem um telefone
+        Telefone fone = new Telefone();
+        fone.setTipo("celular");
+        fone.setDdd("51");
+        fone.setNumero("666666");
+        
+        
+        
+        System.out.println(contato.getNome());
+        System.out.println(contato.getTelefones());
+        
+        if(contato != null && contato.getEndereco() != null){
+            System.out.println(contato.getEndereco().getCidade());
+        }
+        if(contato != null && contato.getTelefones()!= null){
+            System.out.println(contato.getTelefones().getDdd() + "  " + contato.getTelefones().getNumero());//AQUI TÁ DANDO ERRO
+        }
+    }
+} 
+
+#######################
+package umpraum;
+public class Contato {
+   private String nome;
+   private Endereco endereco;
+   private Telefone [] telefones;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Telefone[] getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(Telefone[] telefones) {
+        this.telefones = telefones;
+    }
+}
+    
+######################################
+package umpraum;
+public class Contato {
+   private String nome;
+   private Endereco endereco;
+   private Telefone [] telefones;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Telefone[] getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(Telefone[] telefones) {
+        this.telefones = telefones;
+    }
+}
+#######################################
+
+package umpraum;
+public class Telefone {
+    private String tipo;
+    private String ddd;
+    private String numero;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getDdd() {
+        return ddd;
+    }
+
+    public void setDdd(String ddd) {
+        this.ddd = ddd;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+}
+
