@@ -35,10 +35,8 @@ public class Imovel {
         this.valor = valor;
         this.endereco = endereco;
         this.areaTotal = areaTotal;
-        
     }
 
-    
     public int getCod() {
         return cod;
     }
@@ -74,6 +72,22 @@ public class Imovel {
     public static int getAuxCodigo() {
         return auxCodigo;
     }
+public static void setAuxCodigo(int auxCodigo) {
+        Imovel.auxCodigo = auxCodigo;
+    }
+    
+     public void exibirDetalhes(){
+         System.out.println("Codigo: " +getCod());
+         System.out.println("Valor: " + getValor());
+         System.out.println("Endereco: " + getEndereco());
+         System.out.println("Area Total: " + getAreaTotal()); 
+         
+                 
+    }
+    public float calcularIptu(float iptu){
+        return iptu;
+    }
+}
 ####################
 
 package com.mycompany.corretora;
@@ -98,25 +112,6 @@ public class Terreno extends Imovel{
         super.exibirDetalhes();
         System.out.println("Tipo: " + getTipo()); 
     } 
-}
-####################
-
-
-    public static void setAuxCodigo(int auxCodigo) {
-        Imovel.auxCodigo = auxCodigo;
-    }
-    
-     public void exibirDetalhes(){
-         System.out.println("Codigo: " +getCod());
-         System.out.println("Valor: " + getValor());
-         System.out.println("Endereco: " + getEndereco());
-         System.out.println("Area Total: " + getAreaTotal()); 
-         
-                 
-    }
-    public float calcularIptu(float iptu){
-        return iptu;
-    }
 }
 ####################
 
