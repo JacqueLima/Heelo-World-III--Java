@@ -166,7 +166,7 @@ public class Apartamento extends Imovel {
     @Override
     /*
     @Override :significa que estou sobrescrevendo o método getEndereco() da superclasse.
-    Quando eu uso @Override estou indicando o meu método tem a mesma assinatura 
+    Quando eu uso @Override estou indicando que o meu método tem a mesma assinatura 
     (nome, parâmetros e retorno) de um método da superclasse.
     */
     public String getEndereco() {
