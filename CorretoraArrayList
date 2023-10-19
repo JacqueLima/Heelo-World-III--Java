@@ -14,14 +14,11 @@ public class Corretora {
             System.out.println("3) Cadastrar terreno");
             System.out.println("4) Listar imóveis");
             System.out.println("0) Sair");
-
-        
-    }
+ }
 }
 ####################
 
 package com.mycompany.corretora;
-
 
 public class Imovel {
     private int cod;
@@ -81,8 +78,6 @@ public static void setAuxCodigo(int auxCodigo) {
          System.out.println("Valor: " + getValor());
          System.out.println("Endereco: " + getEndereco());
          System.out.println("Area Total: " + getAreaTotal()); 
-         
-                 
     }
     public float calcularIptu(float iptu){
         return iptu;
@@ -111,8 +106,10 @@ public class Terreno extends Imovel{
     public void exibirDetalhes(){
         super.exibirDetalhes();
         System.out.println("Tipo: " + getTipo()); 
-    } 
-}
+    }
+   public float calcularIptu(floar Iptu){
+         return areaTotal * 10f;//AQUI TEM ERRO
+   }
 ####################
 
 package com.mycompany.corretora;
@@ -138,15 +135,13 @@ public class Casa extends Imovel {
         System.out.println("Area Construida" + getAreaConstruida());
     }
     public float calcularIptu(float iptu){
-        return iptu;
+       //EXIBE O CALCULO
+        return ((areaConstruida * 12) - 0.35f);
     }
-    
-    
 }
 ####################
 
 package com.mycompany.corretora;
-
 
 public class Apartamento extends Imovel {
     private float areaPrivativa;
@@ -167,7 +162,23 @@ public class Apartamento extends Imovel {
         super.exibirDetalhes();
         System.out.println("Area privativa: " + getAreaPrivativa());
     }
-    public float calcularIptu(float iptu){
-        return iptu;
+
+    @Override
+    /*
+    @Override :significa que estou sobrescrevendo o método getEndereco() da superclasse.
+    Quando eu uso @Override estou indicando o meu método tem a mesma assinatura 
+    (nome, parâmetros e retorno) de um método da superclasse.
+    */
+    public String getEndereco() {
+        return super.getEndereco(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-}
+      
+    public void exibirDetalhes(){
+        super.exibirDetalhes();
+        System.out.println("Area privativa: " + getAreaPrivativa());
+    }
+    public float calcularIptu(float iptu){
+        return (areaprivativa * 10.f + areatotal / 24 + (areaprivativa * 5f) - 25%;
+   }   
+}    
+
