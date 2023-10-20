@@ -75,21 +75,26 @@ public class Imovel {
     private float valor;
     private String endereco;
     private float areaTotal;
-    private static int auxCodigo=1;
+    private static int auxCod = 1;
 
-    public Imovel(int cod, float valor, String endereco, float areaTotal) {
-        this.cod = cod;
+    public Imovel(float valor, String endereco, float areaTotal) {
+        this.cod = auxCod++;
         this.valor = valor;
         this.endereco = endereco;
+        this.areaTotal = areaTotal;
+        
+    }
+
+    public float getAreaTotal() {
+        return areaTotal;
+    }
+
+    public void setAreaTotal(float areaTotal) {
         this.areaTotal = areaTotal;
     }
 
     public int getCod() {
         return cod;
-    }
-
-    public void setCod(int cod) {
-        this.cod = cod;
     }
 
     public float getValor() {
@@ -107,42 +112,31 @@ public class Imovel {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-
-    public float getAreaTotal() {
-        return areaTotal;
-    }
-
-    public void setAreaTotal(float areaTotal) {
-        this.areaTotal = areaTotal;
-    }
-
-    public static int getAuxCodigo() {
-        return auxCodigo;
-    }
-    public static void setAuxCodigo(int auxCodigo) {
-        Imovel.auxCodigo = auxCodigo;
+    
+    public void exibirDetalhes(){
+        System.out.println("*********************");
+        System.out.println("Código: " + getCod());
+        System.out.println("Valor:  " + getValor());
+        System.out.println("Endereço: " + getEndereco());
+        System.out.println("Área Total: " + getAreaTotal());
+        
     }
     
-     public void exibirDetalhes(){
-         System.out.println("Codigo: " +getCod());
-         System.out.println("Valor: " + getValor());
-         System.out.println("Endereco: " + getEndereco());
-         System.out.println("Area Total: " + getAreaTotal()); 
-    }
     public float calcularIptu(float areaTotal){
-        return (areaTotal * 10);
+        return (areaTotal*10);
     }
 }
+
+
 ####################
 
 package com.mycompany.corretora;
 
-
 public class Terreno extends Imovel{
     private String tipo;
 
-    public Terreno(int cod, float valor, String endereco, float areaTotal) {
-        super(cod, valor, endereco, areaTotal);
+    public Terreno(float valor, String endereco, float areaTotal) {
+        super(valor, endereco, areaTotal);
     }
 
     public String getTipo() {
@@ -153,23 +147,23 @@ public class Terreno extends Imovel{
         this.tipo = tipo;
     }
 
-    public void exibirDetalhes(){
-        super.exibirDetalhes();
-        System.out.println("Tipo: " + getTipo()); 
+    @Override
+    public void exibirDetalhes() {
+        super.exibirDetalhes(); 
+        System.out.println("Tipo: " + getTipo());
+        System.out.println("IPTU: " + calcularIptu(getAreaTotal()));
     }
-   public float calcularIptu(floar Iptu){
-         return areaTotal * 10f;//AQUI TEM ERRO
-   }
+}
 ####################
 
 package com.mycompany.corretora;
 
-
 public class Casa extends Imovel {
     private float areaConstruida;
 
-    public Casa(int cod, float valor, String endereco, float areaTotal) {
-        super(cod, valor, endereco, areaTotal);
+    public Casa(float valor, String endereco, float areaTotal) {
+        super(valor, endereco, areaTotal);
+        this.areaContruida=areaConstruida;
     }
 
     public float getAreaConstruida() {
@@ -179,15 +173,19 @@ public class Casa extends Imovel {
     public void setAreaConstruida(float areaConstruida) {
         this.areaConstruida = areaConstruida;
     }
-    
-    public void exibirDetalhes(){
-        super.exibirDetalhes();
-        System.out.println("Area Construida" + getAreaConstruida());
+     @Override
+    public float calcularIptu(float areaConstruida) {
+        //(área construída * R$ 12,00) – 35%
+        return ((areaConstruida*12) - (areaConstruida*12*0.35f));    
     }
-    public float calcularIptu(float iptu){
-       //EXIBE O CALCULO
-        return ((areaConstruida * 12) - 0.35f);
+
+    @Override
+    public void exibirDetalhes() {
+        super.exibirDetalhes(); 
+        System.out.println("Área Construida: " + getAreaConstruida());
+        System.out.println("IPTU:  " + calcularIptu(getAreaConstruida()));
     }
+   
 }
 ####################
 
@@ -196,8 +194,9 @@ package com.mycompany.corretora;
 public class Apartamento extends Imovel {
     private float areaPrivativa;
 
-    public Apartamento(int cod, float valor, String endereco, float areaTotal) {
+    public Apartamento(float valor, String endereco, float areaTotal) {
         super(cod, valor, endereco, areaTotal);
+        this.areaPrivativa = areaPrivativa;
     }
 
     public float getAreaPrivativa() {
@@ -213,22 +212,22 @@ public class Apartamento extends Imovel {
         System.out.println("Area privativa: " + getAreaPrivativa());
     }
 
-    @Override
     /*
-    @Override :significa que estou sobrescrevendo o método getEndereco() da superclasse.
+    @Override :significa que estou sobrescrevendo o método da superclasse.
     Quando eu uso @Override estou indicando que o meu método tem a mesma assinatura 
     (nome, parâmetros e retorno) de um método da superclasse.
     */
-    public String getEndereco() {
-        return super.getEndereco(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    @Override
+    public float calcularIptu(float areaPrivativa) {
+        //((área privativa * R$ 10,00) + (área total / 24 + área privativa * R$ 5,00)) – 25%
+        float resultado_1 =  ((areaPrivativa*10.0f) + (getAreaTotal()/24 + areaPrivativa*5));
+        return (resultado_1-(resultado_1*0.25f));
     }
-      
-    public void exibirDetalhes(){
+    @Override
+    public void exibirDetalhes() {
         super.exibirDetalhes();
-        System.out.println("Area privativa: " + getAreaPrivativa());
+        System.out.println("Área Privativa: " + getAreaPrivativa());
+        System.out.println("IPTU: " + calcularIptu(getAreaPrivativa()));
     }
-    public float calcularIptu(float iptu){
-        return (areaprivativa * 10.f + areatotal / 24 + (areaprivativa * 5f) - 25%;
-   }   
 }    
 
