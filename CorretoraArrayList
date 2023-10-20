@@ -1,21 +1,71 @@
 package com.mycompany.corretora;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Corretora {
 
     public static void main(String[] args) {
-        ArrayList<Imovel> cadastro = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        
-            System.out.println("Escolha uma opção:");
-            System.out.println("1) Cadastrar casa");
-            System.out.println("2) Cadastrar apartamento");
-            System.out.println("3) Cadastrar terreno");
-            System.out.println("4) Listar imóveis");
-            System.out.println("0) Sair");
- }
+        Scanner scan = new Scanner(System.in);
+        int menu=0;
+        String endereco="", tipo="";
+        float areaTotal=0, valor=0, areaConstruida=0, areaPrivativa=0;
+        ArrayList<Imovel> cadastro = new ArrayList(); 
+        do {
+            System.out.println("1 - Cadastrar Casa");
+            System.out.println("2 - Cadastrar Apto");
+            System.out.println("3 - Cadastrar Terreno");
+            System.out.println("4 - Listar Imóveis");
+            System.out.println("0 - Sair");
+            menu = scan.nextInt();
+            if (menu >= 1 && menu <= 3) {
+                System.out.println("Informe o endereço: ");
+                scan.nextLine();
+                endereco = scan.nextLine();
+                System.out.println("Informe a área total: ");
+                areaTotal = scan.nextFloat();
+                System.out.println("Informe o valor: ");
+                valor = scan.nextFloat();
+            }
+            switch (menu) {
+                case 1:
+                    System.out.println("Informe a área construida: ");
+                    areaConstruida = scan.nextFloat();
+                    Imovel c = new Casa(areaConstruida, valor, endereco, areaTotal);
+                    cadastro.add(c);
+                    break;
+                case 2:
+                    System.out.println("Informe a área privativa: ");
+                    areaPrivativa = scan.nextFloat();
+                    Imovel a = new Apto(areaPrivativa, valor, endereco, areaTotal);
+                    cadastro.add(a);
+                    break;
+                case 3:
+                    System.out.println("Informe o tipo: U - Urbano, R - Rural: ");
+                    scan.nextLine();
+                    tipo = scan.nextLine();
+                    Imovel t = new Terreno(tipo, valor, endereco, areaTotal);
+                    cadastro.add(t);
+                    break;
+                case 4:
+                    if(cadastro.isEmpty()) System.out.println("Nenum imovel cadastrado!");
+                    else{
+                        for(Imovel i:cadastro){
+                            i.exibirDetalhes();
+                            
+                        }
+                    }
+
+                    break;
+                case 0:
+                    break;
+            }
+
+        } while (menu != 0);
+
+    }
 }
+
 ####################
 
 package com.mycompany.corretora;
@@ -79,8 +129,8 @@ public static void setAuxCodigo(int auxCodigo) {
          System.out.println("Endereco: " + getEndereco());
          System.out.println("Area Total: " + getAreaTotal()); 
     }
-    public float calcularIptu(float iptu){
-        return iptu;
+    public float calcularIptu(float areaTotal){
+        return (areaTotal * 10);
     }
 }
 ####################
