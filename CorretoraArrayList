@@ -75,7 +75,7 @@ public class Imovel {
     private float valor;
     private String endereco;
     private float areaTotal;
-    private static int auxCodigo=0;
+    private static int auxCodigo=1;
 
     public Imovel(int cod, float valor, String endereco, float areaTotal) {
         this.cod = cod;
@@ -119,7 +119,7 @@ public class Imovel {
     public static int getAuxCodigo() {
         return auxCodigo;
     }
-public static void setAuxCodigo(int auxCodigo) {
+    public static void setAuxCodigo(int auxCodigo) {
         Imovel.auxCodigo = auxCodigo;
     }
     
