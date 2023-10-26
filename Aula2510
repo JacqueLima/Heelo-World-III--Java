@@ -1,0 +1,250 @@
+
+
+package com.mycompany.aula2510;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Aula2510{
+    
+    public static void clean(){
+        System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    }
+    
+    public static void divider(){
+        System.out.println("----------------------------------------------------------------------------------------");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
+        
+        int inp;//variavel que vai guardar o que o usuario digitar
+        String nome;
+        int idade, tipo;
+        String cpf, cnpj;
+        
+        boolean sair=false;
+        while(!sair){
+            divider();//Faz isso "------------"
+            System.out.println("1-Cadastrar pessoa: ");
+            System.out.println("2-Buscar pessoa");
+            System.out.println("3-Incrementar idade");
+            System.out.println("4-Exclui pessoa");
+            System.out.println("5-Listar pessoa");
+            System.out.println("6-Listar pessoas de idade (X)");
+            System.out.println("7-Sair");
+            divider();
+            inp=sc.nextInt();
+            sc.nextLine();
+            divider();
+            switch(inp){
+                case 1:
+                    System.out.print("Digite um Nome: ");
+                    nome = sc.nextLine();
+                    divider();
+                    System.out.print("Digite a Idade: ");
+                    idade = sc.nextInt();
+                    sc.nextLine();
+                    divider();
+                    System.out.print("Qual o tipo de pessoa?\n\n1) Física\n2) Juridica\n:");
+                    tipo = sc.nextInt();
+                    sc.nextLine();
+                    divider();
+                    if(tipo == 1){
+                        System.out.print("Digite o CPF: ");
+                        cpf = sc.nextLine();
+                        pessoas.add(new PF(cpf, nome, idade));
+                    }else if(tipo == 2){
+                        System.out.print("Digite o CNPJ: ");
+                        cnpj = sc.nextLine();
+                        pessoas.add(new PJ(cnpj, nome, idade));
+                    }
+                    divider();
+                    System.out.println("Cadastro feito!");
+                    break;
+                case 2:
+                    System.out.print("Digite um Nome Cadastrado: ");
+                    nome=sc.next();
+                    sc.nextLine();
+                    divider();
+                    for (int i=0; i<pessoas.size();i++){
+                        if(pessoas.get(i).getNome().equals(nome)){
+                            System.out.println(pessoas.get(i).dados());
+                        }
+                    }
+                    break;
+                case 3:
+                    System.out.print("Digite um Nome Cadastrado: ");
+                    nome = sc.next();
+                    sc.nextLine();
+                    for(int i = 0; i < pessoas.size(); i++){
+                        if(pessoas.get(i).getNome().equals(nome)){
+                            if(pessoas.get(i) instanceof PF){
+                                ((PF) pessoas.get(i)).fazerAniversario();
+                            }else if(pessoas.get(i) instanceof PJ){//Intanceof serve pra saber a classe do objeto.
+                                ((PJ) pessoas.get(i)).fazerAniversario();
+                            }
+                        }
+                        divider();
+                        System.out.println(pessoas.get(i).getNome() + " fez aniversário, e agora tem " + pessoas.get(i).getIdade() + " anos.");
+                    }
+                    
+                    break;
+                case 4:
+                    System.out.print("Digite um Nome Cadastrado para a Exclusão: ");
+                    nome=sc.next();
+                    sc.nextLine();
+                    for (int i=0; i<pessoas.size();i++){
+                        if(pessoas.get(i).getNome().equals(nome)){
+                            System.out.println("Cadastro de " + pessoas.get(i).getNome() + " Deletado.");
+                            pessoas.remove(i);
+                        }
+                    }
+                    break;
+                case 5:
+                    for(int i = 0; i < pessoas.size(); i++){
+                       System.out.println(String.valueOf(i) + ": " + pessoas.get(i).getNome());
+                    }
+                    break;
+                case 6:
+                    idade=sc.nextInt();
+                    sc.nextLine();
+                    for (int i=0; i<pessoas.size();i++){
+                        if(pessoas.get(i).getIdade() == idade){
+                            System.out.println(String.valueOf(i) + ": " + pessoas.get(i).getNome());
+                        }
+                    }
+                    break;
+                case 7:
+                    sair=true;
+                    divider();
+                    break;
+            }
+            
+        }
+    }
+}
+*******************
+
+package com.mycompany.aula2510;
+
+
+public abstract class Pessoa {
+    private String nome;
+    private int idade;
+     
+    public Pessoa(String nome,int idade){
+        this.nome=nome;
+        this.idade=idade;
+    }
+    public String getNome(){
+        return nome;
+    }
+    public void setNome(String nome){
+        this.nome=nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+    
+    public String dados(){                    //Value:converter n° em String
+        return "Nome: " + this.nome + "\nIdade: " + String.valueOf(this.idade);
+    }
+    
+}
+*******************
+
+package com.mycompany.aula2510;
+
+
+public interface Aniversario {
+    
+    public void fazerAniversario();
+    public void fazerAniversario(int v);
+        
+}    
+
+**********************
+
+package com.mycompany.aula2510;
+
+
+public class PF extends Pessoa implements Aniversario{
+   private String cpf ;
+
+    public PF(String cpf, String nome, int idade) {
+        super(nome, idade);
+        this.cpf = cpf;
+    }
+
+    public PF(String nome, int idade) {
+        super(nome, idade);
+        
+    }
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+   
+    @Override
+    public void fazerAniversario(){
+       setIdade(getIdade()+1);
+    }
+    @Override
+    public void fazerAniversario(int v){
+        setIdade(getIdade()+v);
+    }
+   
+    @Override
+    public String dados(){
+        return super.dados() + "\nCPF: " + this.cpf;
+    }
+}
+***********************
+
+package com.mycompany.aula2510;
+
+
+public class PJ extends Pessoa implements Aniversario{
+   private String cnpj ;
+
+    public PJ(String cnpj, String nome, int idade) {
+        super(nome, idade);
+        this.cnpj = cnpj;
+    }
+
+    public PJ(String nome, int idade) {
+        super(nome, idade);
+        
+    }
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+   
+    @Override
+    public void fazerAniversario(){
+       setIdade(getIdade()+1);
+    }
+    @Override
+    public void fazerAniversario(int v){
+        setIdade(getIdade()+v);
+    }
+    
+    @Override
+    public String dados(){
+        return super.dados() + "\nCNPJ: " + this.cnpj;
+    }
+   
+}
