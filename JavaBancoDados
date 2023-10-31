@@ -1,0 +1,171 @@
+package senac1;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
+
+public class Conexao {
+     private static final String URL = "jdbc:mysql://localhost:3306/senac?zeroDateTimeBehavior=convertToNull";
+    private static final String USER = "root";
+    
+    // para quem instalou o XAMPP
+    private static final String DRIVER = "com.mysql.jdbc.Driver";
+    private static final String SENHA = "";
+
+    
+    public static void executar(String query){
+        try {
+            Class.forName( DRIVER );
+            Connection conn = DriverManager.getConnection(URL,USER,SENHA);
+            Statement st = conn.createStatement();
+            st.execute( query );
+            conn.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+        }
+    }
+    
+    public static ResultSet consultar(String query){
+        try {
+            Class.forName( DRIVER );
+            Connection conn = DriverManager.getConnection(URL,USER,SENHA);
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery( query );
+        //    conn.close();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.toString());
+            return null;
+        }
+    } 
+}
+--------------------------------------------------------------------
+package senac1;
+
+
+public class Pessoa {
+    private int id;
+    private String nome;
+    private String email;
+    
+    public Pessoa(String nome, String email){
+        this.nome = nome;
+        this.email = email;
+    }
+    
+    public int getId(){
+        return id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    public void dados(){
+        System.out.println("Nome: " + getNome());
+        System.out.println("Email: " + getEmail());
+    }
+}
+-------------------------------------------------------------------------------------
+package senac1;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+
+public class Professor extends Pessoa{
+    
+     private double salario; 
+    
+    public Professor(String nome, String email, double salario){
+        super(nome, email);
+        this.salario = salario;
+    }
+    
+    public double getSalario() {
+        return salario;
+    }
+    
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+    
+    public void cadastrar(){
+        String sql =  "INSERT INTO professor (nome, email, salario) VALUES ( "
+                    + " '" + this.getNome() +   "' ,  "
+                    + " '" + this.getEmail() +  "' ,  "
+                    + "  " + this.getSalario() +"  ) ";
+        Conexao.executar( sql );
+    }
+    
+    public void editar(){
+        String sql =  "UPDATE professor SET  "
+                    + " nome    = '" + this.getNome() +   "' ,  "
+                    + " email   = '" + this.getEmail() +  "' ,  "
+                    + " salario =  " + this.getSalario() +"     "
+                    + " WHERE idProfessor = " + this.getId();
+        Conexao.executar( sql );
+    }
+    
+    public static void excluir(int idProfessor){
+        String sql =  "DELETE FROM professor WHERE idProfessor = " + idProfessor;
+        Conexao.executar( sql );
+    }
+    
+    
+    public static ArrayList<Professor> getProfessores(){
+        ArrayList<Professor> lista = new ArrayList<>();
+        
+        String sql = "SELECT idProfessor, nome, email, salario FROM professor ORDER BY nome ";
+        
+        ResultSet rs = Conexao.consultar( sql );
+        
+        if( rs != null){
+            
+            try{
+                while ( rs.next() ) {                
+                    String nome = rs.getString( 2 );
+                    String email = rs.getString( "email" );
+                    double salario = rs.getDouble( 4 );
+                    Professor prof = new Professor(nome, email, salario);
+                    prof.setId( rs.getInt( "idProfessor" ) );
+                    lista.add( prof );
+                }
+            }catch(Exception e){
+                
+            }
+            
+        }
+     
+        return lista;
+    }
+    
+    
+   @Override
+    public void dados(){
+        super.dados();
+        System.out.println("Salario: " + getSalario());
+        System.out.println("#########################");
+    }
+    
+}
