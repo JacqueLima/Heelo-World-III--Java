@@ -15,7 +15,7 @@ public class CauculaImc {
                     imc= peso/(altura * altura);
                       System.out.println("IMC: "+df.format(imc));
                          if (imc>25) {
-                           System.out.println("Você stá acima dopeso!");  
+                           System.out.println("Você stá acima do peso!");  
               }              else {
                                System.out.println("Você está saudável!"); 
           }
