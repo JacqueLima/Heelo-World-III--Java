@@ -1,0 +1,63 @@
+package com.mycompany.calculadora1;
+import java.awt.Container;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.TextField;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import  javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+
+/**
+ *
+ * @author 182310072
+ */
+public class Calculadora1 extends JFrame implements ActionLListener{
+      public Calculadora1(){
+          //JTextField resultado;
+          //JButton b1,b2,b3,b4,
+          Container C = getContentPane();
+          C.setLayout(new BorderLayout());
+      
+          Container C2=(new JPanel());
+          C2.setLayout(new GridLayout(5,9));
+          
+          
+          C2.add(new JButton("+"));
+          C2.add(new JButton("-"));
+          C2.add(new JButton("*"));
+          C2.add(new JButton("/"));
+          C2.add(new JButton("1"));
+          C2.add(new JButton("2"));
+          C2.add(new JButton("3"));
+          C2.add(new JButton("4"));
+          C2.add(new JButton("5"));
+          C2.add(new JButton("6"));
+          C2.add(new JButton("7"));
+          C2.add(new JButton("8"));
+          C2.add(new JButton("9"));
+          C2.add(new JButton("0"));
+           C2.add(new JButton("="));
+          
+          C.add(BorderLayout.SOUTH,C2);
+          
+          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          setSize(300,300);
+          setVisible(true);
+          
+      }
+
+    public static void main(String[] args) {
+        
+        new Calculadora1();
+        
+    }
+
+   
+    }
+}
