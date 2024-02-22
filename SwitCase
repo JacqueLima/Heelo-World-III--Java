@@ -1,0 +1,131 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Calculadora10 extends JFrame implements ActionListener {
+
+    JTextField resultado;
+    JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15;
+    String v1 = "", op = "", v2 = "";
+
+    public Calculadora10() {
+        Container C = getContentPane();
+        C.setLayout(new BorderLayout());
+
+        resultado = new JTextField(); // Instancia o campo de texto
+        resultado.setEditable(false); // Define o campo de texto como somente leitura
+
+        Container C2 = new JPanel();
+        C2.setLayout(new GridLayout(5, 9));
+
+        // Instancia e adiciona os botões ao painel C2
+        C2.add(b1 = new JButton("+"));
+        C2.add(b2 = new JButton("-"));
+        C2.add(b3 = new JButton("*"));
+        C2.add(b4 = new JButton("/"));
+        C2.add(b5 = new JButton("1"));
+        C2.add(b6 = new JButton("2"));
+        C2.add(b7 = new JButton("3"));
+        C2.add(b8 = new JButton("4"));
+        C2.add(b9 = new JButton("5"));
+        C2.add(b10 = new JButton("6"));
+        C2.add(b11 = new JButton("7"));
+        C2.add(b12 = new JButton("8"));
+        C2.add(b13 = new JButton("9"));
+        C2.add(b14 = new JButton("0"));
+        C2.add(b15 = new JButton("="));
+
+        // Adiciona os listeners de ação aos botões
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
+        b4.addActionListener(this);
+        b5.addActionListener(this);
+        b6.addActionListener(this);
+        b7.addActionListener(this);
+        b8.addActionListener(this);
+        b9.addActionListener(this);
+        b10.addActionListener(this);
+        b11.addActionListener(this);
+        b12.addActionListener(this);
+        b13.addActionListener(this);
+        b14.addActionListener(this);
+        b15.addActionListener(this);
+
+        // Adiciona os componentes ao frame
+        C.add(BorderLayout.NORTH, resultado);
+        C.add(BorderLayout.SOUTH, C2);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 300);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String s = e.getActionCommand(); // retorna o rótulo
+        switch (s) {
+            case "C":
+                v1 = op = v2 = "";
+                resultado.setText("");
+                break;
+            case "+":
+            case "-":
+            case "*":
+            case "/":
+                if (!op.equals("") && !v2.equals("")) {
+                    calcular();
+                    v1 = resultado.getText();
+                    op = s;
+                    v2 = "";
+                } else {
+                    op = s;
+                }
+                break;
+            case "=":
+                if (!v1.equals("") && !op.equals("") && !v2.equals("")) {
+                    calcular();
+                    op = v2 = "";
+                }
+                break;
+            default:
+                if (op.equals("")) {
+                    v1 += s;
+                } else {
+                    v2 += s;
+                }
+                break;
+        }
+        resultado.setText(v1 + op + v2);
+    }
+
+    private void calcular() {
+        double resultadoOperacao = 0;
+        double num1 = Double.parseDouble(v1);
+        double num2 = Double.parseDouble(v2);
+        switch (op) {
+            case "+":
+                resultadoOperacao = num1 + num2;
+                break;
+            case "-":
+                resultadoOperacao = num1 - num2;
+                break;
+            case "*":
+                resultadoOperacao = num1 * num2;
+                break;
+            case "/":
+                if (num2 != 0) {
+                    resultadoOperacao = num1 / num2;
+                } else {
+                    resultado.setText("Erro: Divisão por zero");
+                    return;
+                }
+                break;
+        }
+        resultado.setText(String.valueOf(resultadoOperacao));
+        v1 = String.valueOf(resultadoOperacao);
+    }
+
+    public static void main(String[] args) {
+        new Calculadora10();
+    }
+}
