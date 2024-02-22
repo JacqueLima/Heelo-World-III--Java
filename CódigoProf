@@ -1,0 +1,139 @@
+ @Override
+    public void actionPerformed(ActionEvent e) {
+        String s = e.getActionCommand(); // retorna o rotulo
+        if ((s.charAt(0) >= '0' && s.charAt(0) <= '9') || s.charAt(0) == '.') {
+            if (!op.equals(""))
+                v2 = v2 + s;
+            else
+                v1 = v1 + s;
+ 
+            resultado.setText(v1 + op + v2);
+        }
+        else if (s.charAt(0) == 'C') {
+            v1 = op = v2 = "";
+            resultado.setText(v1 + op + v2);
+        }
+        else if (s.charAt(0) == '=') {
+            double te;
+ 
+            if (op.equals("+"))
+                te = (Double.parseDouble(v1) + Double.parseDouble(v2));
+            else if (op.equals("-"))
+                te = (Double.parseDouble(v1) - Double.parseDouble(v2));
+            else if (op.equals("/"))
+                te = (Double.parseDouble(v1) / Double.parseDouble(v2));
+            else
+                te = (Double.parseDouble(v1) * Double.parseDouble(v2));
+ 
+            resultado.setText(v1 + op + v2 + "=" + te);
+            v1 = Double.toString(te);
+            op = v2 = "";
+        }
+        else {
+            
+            if (op.equals("") || v2.equals(""))
+                op = s;
+           
+            else {
+                double te;
+                if (op.equals("+"))
+                    te = (Double.parseDouble(v1) + Double.parseDouble(v2));
+                else if (op.equals("-"))
+                    te = (Double.parseDouble(v1) - Double.parseDouble(v2));
+                else if (op.equals("/"))
+                    te = (Double.parseDouble(v1) / Double.parseDouble(v2));
+                else
+                    te = (Double.parseDouble(v1) * Double.parseDouble(v2));
+ 
+                v1 = Double.toString(te);
+ 
+                op = s;
+ 
+                v2 = "";
+            }
+ 
+            resultado.setText(v1 + op + v2);
+        }
+    }
+  
+ @Override
+    public void actionPerformed(ActionEvent e) {
+        String s = e.getActionCommand(); // retorna o rotulo
+        if ((s.charAt(0) >= '0' && s.charAt(0) <= '9') || s.charAt(0) == '.') {
+            if (!op.equals(""))
+                v2 = v2 + s;
+            else
+                v1 = v1 + s;
+ 
+            resultado.setText(v1 + op + v2);
+        }
+        else if (s.charAt(0) == 'C') {
+            v1 = op = v2 = "";
+            resultado.setText(v1 + op + v2);
+        }
+        else if (s.charAt(0) == '=') {
+            double te;
+ 
+            if (op.equals("+"))
+                te = (Double.parseDouble(v1) + Double.parseDouble(v2));
+            else if (op.equals("-"))
+                te = (Double.parseDouble(v1) - Double.parseDouble(v2));
+            else if (op.equals("/"))
+                te = (Double.parseDouble(v1) / Double.parseDouble(v2));
+            else
+                te = (Double.parseDouble(v1) * Double.parseDouble(v2));
+ 
+            resultado.setText(v1 + op + v2 + "=" + te);
+            v1 = Double.toString(te);
+            op = v2 = "";
+        }
+        else {
+            
+            if (op.equals("") || v2.equals(""))
+                op = s;
+           
+            else {
+                double te;
+                if (op.equals("+"))
+                    te = (Double.parseDouble(v1) + Double.parseDouble(v2));
+                else if (op.equals("-"))
+                    te = (Double.parseDouble(v1) - Double.parseDouble(v2));
+                else if (op.equals("/"))
+                    te = (Double.parseDouble(v1) / Double.parseDouble(v2));
+                else
+                    te = (Double.parseDouble(v1) * Double.parseDouble(v2));
+ 
+                v1 = Double.toString(te);
+ 
+                op = s;
+ 
+                v2 = "";
+            }
+ 
+            resultado.setText(v1 + op + v2);
+        }
+    }
+  Este código é uma implementação de um manipulador de eventos para uma calculadora básica em Java, utilizando a classe `ActionEvent`. Vou explicar passo a passo o que cada parte do código faz:
+
+1. `@Override`:
+   - Esta anotação é usada para informar ao compilador que o método a seguir está substituindo um método da superclasse, neste caso, `actionPerformed` da interface `ActionListener`.
+
+2. `public void actionPerformed(ActionEvent e)`:
+   - Este método é chamado quando um evento ocorre, neste caso, quando um botão da calculadora é clicado. Ele é chamado com um objeto `ActionEvent` como argumento, que fornece informações sobre o evento.
+
+3. `String s = e.getActionCommand();`:
+   - Esta linha obtém o comando de ação associado ao evento. No contexto de uma calculadora, isso geralmente será o texto exibido no botão clicado.
+
+4. `if ((s.charAt(0) >= '0' && s.charAt(0) <= '9') || s.charAt(0) == '.') { ... }`:
+   - Este bloco é acionado se o botão clicado for um número ou um ponto decimal. Ele adiciona o número ou ponto decimal à primeira operando (`v1`) se não houver operador selecionado, caso contrário, adiciona à segunda operando (`v2`). Em seguida, atualiza o texto exibido na calculadora com a expressão atual.
+
+5. `else if (s.charAt(0) == 'C') { ... }`:
+   - Este bloco é acionado se o botão clicado for "C", o que geralmente indica um botão de limpar. Ele redefine todas as variáveis (`v1`, `op`, `v2`) para uma string vazia e atualiza o texto exibido na calculadora.
+
+6. `else if (s.charAt(0) == '=') { ... }`:
+   - Este bloco é acionado se o botão clicado for o botão de igual. Ele executa a operação aritmética com base no operador atual (`op`), os operandos (`v1` e `v2`) e exibe o resultado na calculadora. Em seguida, atualiza `v1` com o resultado, limpa `op` e `v2`.
+
+7. `else { ... }`:
+   - Este é o bloco padrão para os operadores (`+, -, *, /`). Se não houver um operador selecionado (`op`) ou se a segunda operando (`v2`) estiver vazia, ele atribui o operador clicado a `op`. Caso contrário, executa a operação atual com base no operador atual e exibe o resultado na calculadora. Em seguida, atualiza `v1` com o resultado, atribui o novo operador a `op` e limpa `v2`.
+
+No geral, este código implementa uma calculadora simples que pode lidar com operações básicas de adição, subtração, multiplicação e divisão, além de limpar o visor.
