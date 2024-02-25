@@ -1,0 +1,28 @@
+//Layout é o modo de distribuição dos elementos no espaço.
+//Gerenciar o layout consiste no processo de determinar o tamanho e a posição dos componentes.
+//Quando não se coloca em que posição o botão ficará,então,fica um sobreposto ao outro.
+//Embora não apreça os dois botões estão ali.
+
+package com.mycompany.janela1;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+
+public class Janela1 extends JFrame{
+
+    public  Janela1(){
+        
+          JFrame minhajanela = new JFrame();
+          JButton botao1 = new JButton("Botão 1"); 
+          JButton botao2 = new JButton("Botão 2");
+          getContentPane().add(botao1);
+          getContentPane().add(botao2);
+          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+          setSize(300,300); 
+          setVisible(true); 
+    } 
+        
+    public static void main (String[]args){
+      new Janela1();
+  }
+}
