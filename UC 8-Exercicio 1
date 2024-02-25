@@ -1,11 +1,11 @@
-package com.mycompany.janela;
+package com.mycompany.janela1;
 
 import javax.swing.JFrame;
 
-public class Janela {
+public class Janela1 {
 
     
-    public  Janela(){
+    public  Janela1(){
         
           JFrame minhajanela = new JFrame();
           minhajanela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -15,6 +15,6 @@ public class Janela {
         
     
     public static void main (String[]args){
-      new Janela();
+      new Janela1();
   }
 }
