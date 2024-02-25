@@ -1,0 +1,25 @@
+//Nesse código janela1 herda todos os métodos e atributos de JFrame.
+//Logo não é necessário declarar o objeto minha janela.
+//Chamamos seus métodos diretamente.
+
+package com.mycompany.janela1;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+
+public class Janela1 extends JFrame{
+
+    public  Janela1(){
+        
+          JFrame minhajanela = new JFrame();
+          JButton botao = new JButton();
+          getContentPane().add(botao); //não se declara mais minhajanela
+          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //não se declara mais minhajanela
+          setSize(300,300); //não se declara mais minhajanela
+          setVisible(true); //não se declara mais minhajanela
+    } 
+        
+    public static void main (String[]args){
+      new Janela1();
+  }
+}
