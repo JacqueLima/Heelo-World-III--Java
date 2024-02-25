@@ -1,0 +1,25 @@
+//Nesse código será acrescentado um container.
+//Que fornecera espaço para que outros elementos sejam adicionados.
+//Será acrescentado um Botão.
+
+package com.mycompany.janela1;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+
+public class Janela1 {
+
+    public  Janela1(){
+        
+          JFrame minhajanela = new JFrame();
+          JButton botao = new JButton();
+          minhajanela.getContentPane().add(botao);    //Botão acrescentado aqui.
+          minhajanela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          minhajanela.setSize(300,300);
+          minhajanela.setVisible(true);
+    } 
+        
+    public static void main (String[]args){
+      new Janela1();
+  }
+}
