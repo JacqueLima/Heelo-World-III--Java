@@ -1,0 +1,40 @@
+//JLabel um Label pode ser personalizado através de alguns atributos como sua fonte, estilos negrito e 
+//itálico,além de um ToolTipText, ou seja, um texto que é mostrado quando temos o cursor
+//do mouse sobre o label.
+
+package com.mycompany.outroscontroles;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.BorderLayout;
+
+public class OutrosControles extends JFrame {
+             
+    public OutrosControles() {
+        super("Outros Controles");
+        Container c = getContentPane();
+        c.setLayout(new FlowLayout());
+        
+        JLabel lbSenac = new JLabel("Senac Tech");
+        lbSenac.setToolTipText("Técnico em Desenvolvimento de Sistemas");
+        Font fonte = new Font("serif", Font.BOLD | Font.ITALIC, 24);
+        lbSenac.setFont(fonte);
+        lbSenac.setForeground(Color.BLUE);
+        
+        
+        c.add(lbSenac); // Adiciona lbSenac ao contêiner sem especificar a posição
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Define o comportamento padrão ao fechar a janela
+        setSize(500, 500); // Define o tamanho da janela
+        setVisible(true); // Torna a janela visível
+    }
+     
+    public static void main(String[] args) {
+        new OutrosControles();
+    }
+}
