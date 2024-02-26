@@ -1,0 +1,34 @@
+//GridLayout dispõe os controles em linhas e colunas. 
+
+
+
+package com.mycompany.janela1;
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.Container;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+public class Janela1 extends JFrame{
+
+    public  Janela1(){
+          super ("Layouts");
+          Container c = getContentPane();
+          c.setLayout(new GridLayout(2,3)); //=>Invocando o método setLayout do objeto Container c,
+          c.add(new JButton("Botão 1")); //e passando uma nova instância de GridLayout como argumento para 
+          c.add(new JButton("Botão 2")); //esse método.
+          c.add(new JButton("Botão 3")); //Isso define o layout do container c como um GridLayout.
+          c.add(new JButton("Botão 4"));
+          c.add(new JButton("Botão 5"));                                
+          
+          setDefaultCloseOperation(JFrame .EXIT_ON_CLOSE);
+          setSize(300,300);
+          setVisible(true);
+    } 
+        
+    public static void main (String[]args){
+      new Janela1();
+  }
+}
