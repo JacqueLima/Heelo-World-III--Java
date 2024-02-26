@@ -14,10 +14,10 @@ public class Janela1 extends JFrame{
     public  Janela1(){
           super ("Layouts");
           Container c = getContentPane();
-          c.setLayout(new FlowLayout());
-          c.add (new JButton("Botão 1"));
-          c.add (new JButton("Botão 2"));
-          c.add (new JButton("Botão 3"));
+          c.setLayout(new FlowLayout());//=>Invocando o método setLayout do objeto Container c,
+          c.add (new JButton("Botão 1"));//e passando uma nova instância de FlowLayout como argumento para
+          c.add (new JButton("Botão 2"));//esse método.
+          c.add (new JButton("Botão 3"));//Isso define o layout do container c como um FlowLayout.
           c.add (new JButton("Botão 4"));
           c.add (new JButton("Botão 5"));
           
