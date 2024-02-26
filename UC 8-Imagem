@@ -1,0 +1,37 @@
+package com.mycompany.outroscontroles;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.BorderLayout;
+
+
+public class OutrosControles extends JFrame{
+             
+     public OutrosControles() {
+        super ("Outros Controles");
+        Container c = getContentPane();
+        c.setLayout(new FlowLayout());
+        JLabel lbSenac =new JLabel("Senac Tech");
+        lbSenac.setToolTipText("Técnico em Desenvolvimento de Sistemas");
+        Font fonte = new Font("serif",Font.BOLD|Font.ITALIC,24);
+        lbSenac.setFont(fonte);
+        lbSenac.setForeground(Color.BLUE);
+        ImageIcon minhaImagem = new ImageIcon(getClass().getResource("fotos.tds.jpg"));
+        JLabel lbImage = new Jlabel;
+        
+        c.add(BorderLayout.NORTH,lbSenac);
+        c.add(BorderLayout.CENTER,lbImage);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500,500);
+        setVisible(true);
+    }
+     
+     public static void main (String[] args){
+         new OutrosControles();
+     }
+}
