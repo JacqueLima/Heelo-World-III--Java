@@ -1,0 +1,76 @@
+//JCheckBox um CheckBox ou caixa de verificação pode ser adicionado através da classe JCheckBox. 
+//É uma caixa que pode ou não estar marcada (boolean) e é independente de outras caixas.
+//Botões de radio.
+
+package com.mycompany.outroscontroles;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import java.awt.GridLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.JPanel;
+
+
+public class OutrosControles extends JFrame implements ItemListener {
+    JCheckBox bold,italic;
+    JLabel lbSenac,lbNegrito,lbItalico;
+    
+    public OutrosControles(){
+        super("Outros Controles");
+        Container c = getContentPane();
+        lbSenac = new JLabel("Senac Tech");
+        lbSenac.setToolTipText(("Técnico em Desenvolvimento de Sistemas"));
+        Font fonte = new Font("serif",Font.PLAIN,24);
+        lbSenac.setFont(fonte);
+        
+        Container c2 =  new JPanel();
+        c2.setLayout(new GridLayout(1,4));
+        bold = new JCheckBox();
+        bold.addItemListener(this);
+        c2.add(bold);
+        lbNegrito = new JLabel("negrito");
+        c2.add(lbNegrito);
+        italic = new JCheckBox();
+        italic.addItemListener(this);
+        c2.add(italic);
+        c2.add(new JLabel("itálico"));
+        
+        c.add(BorderLayout.NORTH,lbSenac);
+        c.add(BorderLayout.CENTER,c2);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500,500);
+        setVisible(true);
+        
+    }
+      public static void main (String[] args){
+          new OutrosControles();
+      }
+     
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+      if(bold.isSelected() &&italic.isSelected())
+      {
+          lbSenac.setFont(new Font("serif",Font.BOLD|Font.ITALIC,24));
+      }
+       else if(bold.isSelected())
+      {
+          lbSenac.setFont(new Font("serif",Font.BOLD, 24));
+      }
+      else if(italic.isSelected()){
+          lbSenac.setFont(new Font("serif",Font.BOLD,24));
+      }
+      else{
+          lbSenac.setFont(new Font("serif",Font.PLAIN,24));
+      }
+    }
+      
+}
