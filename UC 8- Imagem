@@ -1,43 +1,55 @@
 
-
-
 package com.mycompany.outroscontroles;
 
-import java.awt.Color; // Importa a classe Color do pacote java.awt para manipulação de cores
-import java.awt.Container; // Importa a classe Container do pacote java.awt para manipulação de contêineres
-import java.awt.FlowLayout; // Importa a classe FlowLayout do pacote java.awt para layout de fluxo
-import java.awt.Font; // Importa a classe Font do pacote java.awt para manipulação de fontes
-import javax.swing.JFrame; // Importa a classe JFrame do pacote javax.swing para criação de janelas
-import javax.swing.JLabel; // Importa a classe JLabel do pacote javax.swing para criação de rótulos
-import javax.swing.ImageIcon;// Importa a classe ImageIcon do pacote javax.swing para exibição de imagens
-import java.awt.BorderLayout;// Importa a classe BorderLayout do pacote java.awt para layout de borda
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
 
-public class OutrosControles extends JFrame {
-             
-    public OutrosControles() {
+public class OutrosControles extends JFrame implements ItemListener{
+    
+    JCheckBox bold,italic;
+    JLabel IbSenac,IbNegrito,IbItalico;
+    
+    public OutrosControles(){
+        
         super("Outros Controles");
         Container c = getContentPane();
-        c.setLayout(new FlowLayout());
+//        c.setLayout(new FlowLayout());
+//        c.setLayout(new BorderLayout());
+        JLabel IbSenac = new JLabel("Senac TECH");
+        IbSenac.setToolTipText("Técnico em Desenvolvimento de Sisitmea");
+//        IbSenac = new JLabel ("Senac TECH");
+        Font fonte = new Font("serif", Font.BOLD|Font.ITALIC,24);
+//        Font fonte = new Font("serif", Font.PLAIN,24);
+        IbSenac.setFont(fonte);
+        IbSenac.setForeground(Color.BLUE);
+        String caminho = "C:\\Users\\201800285\\Documents\\NetBeansProjects\\OutrosControles\\src\\main\\java\\com\\mycompany\\outroscontroles\\OIP.jpg";
+//      ImageIcon minhaImagem = new ImageIcon(getClass().getResource("outroscontroles.jpg"));
+        ImageIcon minhaImagem = new ImageIcon(caminho);
+        JLabel IbImage = new JLabel(minhaImagem);
+//        c.add(IbSenac);
         
-        JLabel lbSenac = new JLabel("Senac Tech");
-        lbSenac.setToolTipText("Técnico em Desenvolvimento de Sistemas");
-        Font fonte = new Font("serif", Font.BOLD | Font.ITALIC, 24);
-        lbSenac.setFont(fonte);
-        lbSenac.setForeground(Color.BLUE);
-        
-        // Corrija o caminho da imagem de acordo com sua localização
-        ImageIcon minhaImagem = new ImageIcon(getClass().getResource("fotos.tds.jpg"));
-        JLabel lbImage = new JLabel(minhaImagem); // Adicionamos a imagem diretamente ao rótulo
-        
-        c.add(lbSenac); // Adiciona lbSenac ao contêiner sem especificar a posição
-        c.add(lbImage); // Adiciona lbImage ao contêiner sem especificar a posição
-        
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Define o comportamento padrão ao fechar a janela
-        setSize(500, 500); // Define o tamanho da janela
-        setVisible(true); // Torna a janela visível
+        c.add(BorderLayout.NORTH, IbSenac);
+        c.add(BorderLayout.CENTER, IbImage);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500,500);
+        setVisible(true); 
     }
-     
+
     public static void main(String[] args) {
-        new OutrosControles();
+        new OutrosControles();    
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
